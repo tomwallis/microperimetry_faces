@@ -1,9 +1,0 @@
-These are R scripts to reproduce the analyses in Wallis, Taylor, Wallis, Jackson & Bex (submitted). The Bayesian analyses in the paper are done with the "Bayesian_percentCorrect_3level" scripts (one sample script, one plot script). The two level model is provided for comparison. To get some of the scripts working on your machine you will need to change some relevant paths. The core data are provided as a .csv file, with reasonably meaningful headers.
-
-These scripts are released under the Community Research and Academic Programming (CRAP) License http://matt.might.net/articles/crapl/. They come with no guarantees of correctness/intelligibility/good coding practice. They are provided primarily to facilitate reproducible research. 
-
-I don't offer any support. You are welcome to send me an email but I make no claim that I will (be able to) help, particularly if you are attempting to use a different platform / setup than me. 
-
-IMPORTANT: If you adapt any part of these scripts for your own academic work, please help keep me employed by citing the following paper:
-
-Wallis, T.S.A., Taylor, C.P.T., Wallis, J., Jackson, M.L. and Bex, P.J. (submitted). Characterisation of field loss based on microperimetry is predictive of face recognition difficulties.
