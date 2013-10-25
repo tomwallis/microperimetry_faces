@@ -1,4 +1,4 @@
-Characterisation of field loss based on microperimetry is predictive of face recognition difficulties
+Microperimetry and face recognition
 ======
 
 These are R scripts to reproduce the analyses in Wallis, Taylor, Wallis, Jackson & Bex (under review).
@@ -20,6 +20,11 @@ Other directories are:
   * /ideal_observer/ contains some legacy code used to produce the ideal observer analysis in the Supplementary Materials.
 
 
+Data organisation
+========
+
+Very raw data is contained in the /data/ subdirectory. If you're looking for a nice file to import all the data into your analysis program of choice, use /output/data.txt, which is a delimited text file including column headers. Each row is a trial in the face recognition experiment.
+
 Reproducing the analysis
 ========
 
@@ -30,7 +35,8 @@ This includes both the text of the manuscript and calls to the analysis function
 in the /funs/ subdirectory.
 By looking through the manuscript.Rnw file you can determine which scripts in the
 /funs/ directory to run in which order.
-Alternatively, just compile manuscript.Rnw using knitr, for example, through [[www.rstudio.org | Rstudio]].
+Alternatively, just compile manuscript.Rnw using knitr, for example, through Rstudio (www.rstudio.org).
+You may need to uncomment some source() functions, for example, to run the MCMC sampler.
 
 I will post more detailed instructions for reproducing the analysis soon.
 
