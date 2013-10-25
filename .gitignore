@@ -4,3 +4,16 @@
 .Rhistory
 
 *.svg
+*.Rproj*
+/cache/*
+output/correlations_samples.RData
+
+output/final_model_samples.RData
+
+manuscript.tex
+
+manuscript-concordance.tex
+
+manuscript.log
+
+manuscript.synctex.gz
