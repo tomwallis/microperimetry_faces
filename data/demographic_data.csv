@@ -1,0 +1,66 @@
+Original Code,temp,Code,Age,Sex,Instruction,PR OD,PR OS,VA OD,VA OS,LogMAR VA better eye,Diagnosis
+P01,pat01,P01,52,M,No,N/A,1.5,N/A,20/150-200,0.88,"Right prosthesis, left keratoplasty"
+P02,pat02,P02,57,M,Yes,1.5 (binocular),,20/400,20/150-1,0.88,Congenital Nystagmus
+P03,pat03,P03,34,M,No,1.35,1.35,20/40,20/30,0.18,Retinitis Pigmentosa
+P04,pat04,P04,26,F,Yes,1.65 (binocular),,20/150,20/150,0.88,Stargardts' Dystrophy
+P05,pat05,P05,30,M,Yes,1.05 (binocular),,1/12,1/16,1.08,Macular Malfunction
+P06,pat06,P06,57,F,No,1.2,0.45,20/30,20/200,0.18,Exposure Keratopathy/Neurotrophic Cornea OS
+P07,pat07,P07,70,F,No,1.05 (binocular),,20/100,20/150,0.70,Glaucoma
+P09,pat08,P08,32,M,No,1.65 (binocular),,20/150,20/150,0.88,Achromatopsia
+P10,pat09,P09,70,M,No,.45 (binocular),,20/400,20/200,1.00,Anterior ischemic optic neuropathy
+P11,pat10,P10,69,F,No,1.35 (binocular),,20/70,20/80,0.54,AMD
+P12,pat11,P11,58,F,No,1.05 (binocular),,20/70,20/100,0.54,Retinal degeneration
+P13,pat12,P12,31,F,No,1.65,1.65,20/25,20/20,0.00,Decreased vision post trauma
+C02,con01,C01,29,M,,42(1.95),,,,-0.13,
+C03,con02,C02,20,F,,42 (1.95),,,,-0.13,
+C04,con03,C03,46,F,,39 (1.8),,,,0.18,
+C05,con04,C04,68,F,,N/A,,,,N/A,
+C06,con05,C05,40,F,,N/A,,,,N/A,
+C07,con06,C06,60,F,,N/A,,,,N/A,
+C08,con07,C07,61,F,,36 (1.65),,,,N/A,
+C09,con08,C08,34,M,,38 (1.8),,,,N/A,
+C10,con09,C09,45,M,,38 (1.8),,,,0.00,
+C11,con10,C10,23,F,,38 (1.8),,,,-0.13,
+C12,con11,C11,34,M,,42 (1.95),,,,-0.13,
+C13,con12,C12,29,F,,39 (1.8),,,,-0.13,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,Table 2: perimetry:,,,,,,,,,
+,,Code,2 deg fixation (%),4 deg fixation (%),Perimetry targets missed (%),Analysis group,,,,,Targets missed (prop)
+P01,,P01,57,94,2,LV,,,,,0.02
+P02,,P02,9,37,46,LV,,,,,0.46
+P03,,P03,100,100,67,LV:F,,,,,0.67
+P04,,P04,41,99,13,LV (PRL?),,,,,0.13
+P05,,P05,42,100,44,LV,,,,,0.44
+P06,,P06,100,100,0,LV:F,,,,,0.00
+P07,,P07,18,100,42,LV (PRL?),,,,,0.42
+P09,,P08,41,80,2,LV,,,,,0.02
+P10,,P09,76,100,83,LV,,,,,0.83
+P11,,P10,100,100,6,LV:F,,,,,0.06
+P12,,P11,72,100,4,LV,,,,,0.04
+P13,,P12,100,100,2,LV:F,,,,,0.02
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,Perimetry Code,Manuscript Code,,,,,,,,,
+,P01,P01,,,,,Calculate logMAR,,,,
+,P02,P02,,,,,do the snellen division then take log10.,,,,
+,P03,P03,,,,,,,,,
+,P04,P04,,,,,VA better eye,Decimal,logMAR,,
+,P05,P05,,,,P01,20/150,7.5,0.8750612634,,
+,P06,P06,,,,P02,20/150,7.5,0.8750612634,,
+,P07,P07,,,,P03,20/30,1.5,0.1760912591,,
+,P09,P08,,,,P04,20/150,7.5,0.8750612634,,
+,P10,P09,,,,P05,1/12,12,1.079181246,,
+,P11,P10,,,,P06,20/30,1.5,0.1760912591,,
+,P12,P11,,,,P07,20/100,5,0.6989700043,,
+,P13,P12,,,,P08,20/150,7.5,0.8750612634,,
+,,,,,,P09,20/200,10,1,,
+,,,,,,P10,20/70,3.5,0.5440680444,,
+,,,,,,P11,20/70,3.5,0.5440680444,,
+,,,,,,P12,20/20,1,0,,

@@ -1,0 +1,861 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{natbib}
+\usepackage{setspace}
+\doublespacing
+\usepackage{rotating}
+\usepackage{array}
+\usepackage{ctable}
+\usepackage{tabularx}
+\usepackage{authblk}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{soul}
+\usepackage[colorlinks=true,citecolor=black]{hyperref}
+\usepackage{float}
+
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+\author[1,3,4]{Thomas S A Wallis \thanks{These authors contributed equally}}
+\author[1]{Christopher Patrick Taylor \samethanks}
+\author[2]{Jennifer Wallis \samethanks}
+\author[2]{Mary Lou Jackson}
+\author[1]{Peter J Bex\thanks{Corresponding author: peter\_bex@meei.harvard.edu}}
+\affil[1]{Schepens Eye Research Institute, Harvard Medical School}
+\affil[2]{Massachusetts Eye and Ear Infirmary, Harvard Medical School}
+\affil[3]{School of Psychology, The University of Western Australia}
+\affil[4]{Present address: Universit\"{a}t T\"{u}bingen, Germany}
+
+\title{
+Characterisation of field loss based on microperimetry is predictive of face recognition difficulties
+}
+
+\begin{document}
+
+\maketitle
+\bibliographystyle{apalike}
+
+% Set up options for knitr:
+<<setup_document,include=FALSE>>=
+library(knitr)
+opts_chunk$set(echo=FALSE, cache=TRUE, include=FALSE, fig.width=3.5, fig.height=4)
+@
+
+<<import_data,include=FALSE>>=
+source(paste0(getwd(),'/funs/import_data.R'))
+@
+
+
+\abstract{
+\textbf{Purpose:}
+To determine how visual field loss as assessed by microperimetry is correlated with deficits in face recognition.
+
+\textbf{Methods:}
+Patients with impaired visual sensitivity in the central visual field caused by a variety of pathologies (N = 12, ages 26--70 years) and normally-sighted control subjects (CS group, N = 12, ages 20--68 years) performed a face recognition task for blurred and un-blurred faces.
+For patients we assessed central visual field loss using microperimetry, fixation stability, Pelli-Robson contrast sensitivity, and letter acuity.
+
+\textbf{Results:}
+Patients were divided into two groups by microperimetry: an LV group (N = 8) had impaired sensitivity at the anatomical fovea and / or poor fixation stability whereas an LV:F group (N = 4) was characterised by at least some residual foveal sensitivity but insensitivity in other retinal regions.
+The LV group performed worse than the other groups at all blur levels, whereas the performance of the LV:F group was not credibly different from the CS group.
+The performance of the CS and LV:F groups deteriorated as blur increased whereas the LV group showed consistently poor performance regardless of blur.
+Visual acuity and fixation stability were correlated with recognition performance.
+
+\textbf{Conclusions:}
+Persons diagnosed with disease affecting the central visual field can recognise faces as well as persons with no visual disease provided that they have residual sensitivity in the anatomical fovea and show stable fixation patterns.
+Performance in this task is limited by the upper resolution of non-foveal vision or image blur, whichever is worse.
+}
+
+
+\section{Introduction}
+
+A crucial function for independent living is recognising people around us.
+Facial features, such as the eyes, are the primary visual cues most humans use in discriminating people they know from those they do not \citep[e.g.,][]{sekuler2004inversion}.
+Reduced sensitivity in the central visual field (defined here as the central 20 degrees of vision) presents a set of challenges for patients to manage as part of their daily lives.
+For observers with central visual field loss face perception can be greatly impaired, and individuals who present for vision rehabilitation regularly report difficulty with face perception \citep{Owsley:2009bp,Watson:1997tr}.
+Since photoreceptor and ganglion cell density \citep{curcio2004human,curcio1990topography} as well as contrast sensitivity \citep{robson1981probability,rovamo1978cortical,hilz1974functional,Kelly:1984uc,johnston1987spatial} decrease as retinal eccentricity increases, it is no surprise that patients with sensitivity losses in the central visual field have difficulty perceiving faces \citep[see][for a quantification of the human CSF contribution to face recognition in the fovea and periphery]{Kwon:2011cw}.
+
+Numerous studies have found impaired face recognition \citep{Bullimore:1991tp,Barnes:2011kj,Glen:2012jt,Glen:2013do,Peli:1991wv,tejeria2002face,Yu:2011et} and emotional expression perception \citep{Mei:2009in,Boucart:2008je} in individuals with central visual field loss.
+For example, \citet{Bullimore:1991tp} determined a threshold viewing distance to reach a criterion level on tasks of identity and expression recognition.
+Patients with central field loss performed worse (required a nearer viewing distance) than normally-sighted controls, and were generally better at recognising the expression of a face than its identity.
+In addition they found that word reading acuity was better correlated with face recognition thresholds than letter chart acuity, grating acuity and contrast threshold for edge detection.
+In a face recognition task similar to the one we employ here, patients with AMD showed slower reaction times and poorer face recognition performance than age-matched controls \citep{Barnes:2011kj}.
+\citet{tejeria2002face} correlated measures of visual function (letter acuity, reading, Pelli-Robson contrast sensitivity and colour vision) and self-reported difficulty in face recognition with performance on a familiar face identification and an odd-one-out expression discrimination task in 30 subjects with AMD.
+Letter and reading acuity were found to be correlated with performance on the face perception tasks, but there was little evidence for a relationship between self-reported difficulty in face perception and performance in either of the tasks.
+Using a ``celebrity'' / ``not a celebrity'' face recognition task, \citet{Peli:1991wv} found that certain types of digital image enhancement improved recognition performance in some (16 of 38) patients with central vision loss \citep[see also][]{Peli:1994wd}.
+Patients with central field loss also demonstrated poorer performance on a famous face recognition task relative to controls in the study of \citet{Dulin:2011gg}.
+It is worth noting however that in face recognition tasks relying on famous faces, the contribution of cultural and general visual exposure cannot be separated from face identification performance per se.
+
+Many of these studies have examined correlations between face recognition performance and standard metrics of functional vision such as acuity and contrast sensitivity and found modest-to-strong relationships, depending on the type of stimulus used in assessment.
+However, the relationships between these quantities and the extent of central field loss are uncertain.
+To more precisely measure these relationships, in the present study we combine an objective measure of face recognition with clinical characterisation of retinal deficiencies using fundus-oriented microperimetry.
+This face identification task has been used previously \citep{Gaspar2008} and shows many classical effects from the face perception literature: the inversion effect \citep{Gaspar2008,Hussain2009}, the contrast-reversed face effect
+\citep{Hussain2009a}, the preferential use of horizontal orientation information \citep{Pachai2012,Goffaux2010,dakin_biological_2009-1} and spatial frequency tuning of approximately 10 cy/face \citep{Gaspar2008}.
+In addition to letter acuity and contrast sensitivity, visual function was assessed with fundus-oriented microperimetry, which allows precise assessment of light sensitivity over a large (approximately 20 degree diameter) region of the retina.
+Perimetry also measures each patient's fixation stability and the locus of fixation, which may be foveal or non-foveal.
+
+Individuals with foveal vision loss may use non-foveal areas of the retina for face perception \citep{Schuchard:2005wn}.
+The peripheral retina has reduced sensitivity to high spatial frequencies compared to the fovea.
+We varied the amount of blur present in our face stimuli by selectively removing high spatial frequency content from the images.
+Individuals with foveal vision loss should be relatively unaffected by stimulus blur, if blur only affects the high spatial frequencies to which they are insensitive.
+We classified low vision participants into two groups on the basis of their sensitivity across the central visual field as well as the stability of their fixation in microperimetry.
+One group had impaired foveal vision and / or poor fixation stability (LV), whereas the other group had visual impairments excluding the fovea (LV:F).
+We hypothesised that the group with intact foveal function would show a consistent reduction in face recognition as a function of blur whereas the impaired fovea group would show poor performance for even relatively blur-free stimuli, consistent with the use of peripheral vision.
+
+
+
+\section{Methods}
+
+\subsection{Participants}
+Patients with various pathologies affecting central visual field sensitivity were recruited from the Vision Rehabilitation Clinic at the Massachusetts Eye and Ear Infirmary.
+Twenty-one patients with low vision were initially enrolled in the study.
+Eight of these patients chose to withdraw after completing less than one full block of trials, in all cases citing frustration with task difficulty.
+This introduced a self-selection bias that may lead us to overestimate the performance of patients with low vision in our study.
+One additional patient was excluded from analyses because we did not have accompanying microperimetry data for that patient.
+These exclusions left a final group of 12 patients aged from 26 to 70 years (mean = 48.8 years).
+Three of the final group of patients completed less than the full three blocks due to time constraints (but did complete at least one block).
+These were P07 (1 block), P08 (2 blocks) and P09 (1 block).
+All patients were tested after initial consultation at the clinic with an ophthalmologist (MLJ), but before any vision rehabilitation training with an occupational therapist.
+
+Twelve control subjects with normal retinal function were recruited, including two of the authors (C01 and C09).
+These subjects ranged between 20 and 68 years old (mean = 40.8).
+Demographic information for all subjects is provided in Table~\ref{tab:demographic}.
+All subjects provided informed consent; the procedures of the experiment were approved by the Institutional Review Board of the MEEI, and the experiment was conducted in accordance with the Declaration of Helsinki.
+
+All participants were divided into one of three groups for data analysis.
+Control subjects (CS) were those with no known visual pathology.
+Patients with low vision were divided into two subgroups based on clinical evaluations and perimetry: those with at least partially functional foveal vision (LV:F) and those without (LV; see Figure~\ref{fig:classification}).
+This classification was made for the eye with better acuity, or if acuity was equal in the two eyes, the eye with more stable fixation in microperimetry.
+The testing area for microperimetry was determined by initial fixation, so was not centred around the anatomical fovea for all patients.
+However, the testing array always included the anatomical fovea.
+The anatomical foveal area was defined as the region of the retina located two vertical optic disk diameters to the temporal side of the optic disk \citep{Jackson:2013wg}.
+Three conditions had to be met for a patient to be classified in the LV:F group.
+First, the perimetry array had to be centred around the anatomical fovea.
+Second, the patient had to report seeing at least one of the four perimetry targets in the centre of the array.
+Third, the patient had to show stable fixation, that is, more than 95\% of fixations fell within two degrees of the anatomical fovea.
+Other patients with a low vision diagnosis failed to detect perimetry targets presented at the fovea and had unstable fixation.
+This group is labelled as LV.
+All patients were classified using these criteria by author JW.
+The classification was independently assessed by familiarising an occupational therapist of the Vision Rehabilitation Clinic (not an author) with the classification guidelines; this person made the same classifications as JW.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figs/classification_figure.pdf}
+\caption{
+Classification of patients into groups based on microperimetry.
+(A): Schematic of classification.
+First, the location of the anatomical fovea (marked here by a red ``F'') was estimated by measuring two vertical optic disk diameters (red line) to the temporal side of the optic disk.
+If any of the targets around the anatomical fovea were detected and $>$ 95\% of fixations (blue crosses) were within 2 degrees of the anatomical fovea in the eye with greater acuity, the patient was classified into the LV:F group.
+(B): Microperimetry output for a patient in the present study (P04) for the patient's right eye (OD), tested with a modified threshold strategy.
+The foveal area is obscured by a scotoma.
+The patient attempted to fixate in the foveal region.
+Fixation stability is poor (lower polar plot, blue crosses) and no targets presented to the anatomical fovea were detected (red circles).
+}
+\label{fig:classification}
+\end{figure}
+
+
+\begin{sidewaystable}[htp] \footnotesize \centering
+
+\caption{Demographic and clinical information.
+The ``instruction'' column refers to those patients who received the pilot instruction manipulation.
+PR refers to log Pelli-Robson contrast sensitivity and VA refers to visual acuity.
+Visual acuity and contrast sensitivity were measured binocularly in control subjects, and where marked in patients.
+}
+\label{tab:demographic}
+\scriptsize
+\begin{tabularx}{\textwidth}{llllllllll}
+Code & Age & Sex & Instruction & PR OD & PR OS & VA OD & VA OS & LogMAR VA better eye & Diagnosis \\  \midrule
+P01 & 52 & M & No & N/A & 1.5 & N/A & 20/150-200 & 0.88 & Right prosthesis, left keratoplasty \\
+P02 & 57 & M & Yes & 1.5 (binocular) &  & 20/400 & 20/150-1 & 0.88 & Congenital Nystagmus \\
+P03 & 34 & M & No & 1.35 & 1.35 & 20/40 & 20/30 & 0.18 & Retinitis Pigmentosa \\
+P04 & 26 & F & Yes & 1.65 (binocular) &  & 20/150 & 20/150 & 0.88 & Stargardts' Dystrophy \\
+P05 & 30 & M & Yes & 1.05 (binocular) &  & 1/12 & 1/16 & 1.08 & Macular Malfunction \\
+P06 & 57 & F & No & 1.2 & 0.45 & 20/30 & 20/200 & 0.18 & Exposure Keratopathy/Neurotrophic Cornea OS \\
+P07 & 70 & F & No & 1.05 (binocular) &  & 20/100 & 20/150 & 0.70 & Glaucoma \\
+P08 & 32 & M & No & 1.65 (binocular) &  & 20/150 & 20/150 & 0.88 & Achromatopsia \\
+P09 & 70 & M & No & .45 (binocular) &  & 20/400 & 20/200 & 1.00 & Anterior ischemic optic neuropathy \\
+P10 & 69 & F & No & 1.35 (binocular) &  & 20/70 & 20/80 & 0.54 & AMD \\
+P11 & 58 & F & No & 1.05 (binocular) &  & 20/70 & 20/100 & 0.54 & Retinal degeneration \\
+P12 & 31 & F & No & 1.65 & 1.65 & 20/25 & 20/20 & 0.00 & Decreased vision post trauma \\ \midrule
+C01 & 29 & M &  & 42(1.95) &  &  &  & -0.13 &  \\
+C02 & 20 & F &  & 42 (1.95) &  &  &  & -0.13 &  \\
+C03 & 46 & F &  & 39 (1.8) &  &  &  & 0.18 &  \\
+C04 & 68 & F &  & N/A &  &  &  & N/A &  \\
+C05 & 40 & F &  & N/A &  &  &  & N/A &  \\
+C06 & 60 & F &  & N/A &  &  &  & N/A &  \\
+C07 & 61 & F &  & 36 (1.65) &  &  &  & N/A &  \\
+C08 & 34 & M &  & 38 (1.8) &  &  &  & N/A &  \\
+C09 & 45 & M &  & 38 (1.8) &  &  &  & 0.00 &  \\
+C10 & 23 & F &  & 38 (1.8) &  &  &  & -0.13 &  \\
+C11 & 34 & M &  & 42 (1.95) &  &  &  & -0.13 &  \\
+C12 & 29 & F &  & 39 (1.8) &  &  &  & -0.13 &  \\ \bottomrule
+\end{tabularx}
+
+\end{sidewaystable}
+
+
+\subsection{Apparatus \& Stimuli}
+
+Face stimuli were presented on an iMac (late 2011 model) on a 27-inch LCD monitor with a spatial resolution of 2560 x 1440 pixels and a temporal resolution of 60~Hz using MATLAB and Psychtoolbox-3 \citep{Kleiner:2007ui,pelli_videotoolbox_1997}.
+The observers viewed the display under normal room illumination, and the mean luminance of the display was 250 cd/m$^{2}$.
+To increase the contrast resolution of the display, a bit-stealing routine was used to increase the number of grey-levels from 6-bits to 8.8 bits \citep{Tyler1997}.
+The stimuli were monochromatic photographs of faces presented at three levels of blur.
+Figure~\ref{fig:faces} depicts examples of representative face stimuli.
+\citet{Gaspar2008} provide a detailed description of how the faces were photographed and processed, thus only a brief description will be provided here \footnote{The face stimuli used in the experiment are available at \url{http://www.tomwallis.info/demos-resources}}.
+The face set contains photographs of 10 individuals (five female), all Caucasian, with a mean age of twenty-four years; none of the models had facial hair, visible piercings, tattoos, or eye glasses.
+All the face images were cropped with an oval window with a width:height ratio of 1.5 to remove all clothing and hair.
+Each model was photographed from 5~view-points.
+To produce each view-point image the model was instructed to fixate on a marker positioned on the wall behind the camera.
+The face set used was made up of two left-, two right- and one front-facing view of each model for a total of 50 face images.
+To control for possible variations in detectability among the face images \citep{Gold:1999wm}, we equated the Fourier amplitude spectra of the images by computing the average amplitude spectrum of the set of face images and then replacing the amplitude spectrum of each image with the average amplitude spectrum.
+As noted in the introduction, this stimulus set has been previously shown to demonstrate classic effects from the face perception literature.
+This indicates that our stimuli tap similar mechanisms to those used in more complex stimulus sets, despite using only a relatively small (10 individuals) and relatively unnatural (lacking features such as hair and skin pigment) set of faces.
+
+To measure the effect of blur on recognition performance of both patients and controls, we tested face recognition performance at two levels of synthetic blur and a no-blur condition.
+Blurred images were produced by applying a low-pass ideal filter (high frequency cutoff 32 or 16 cycles per image, $\approx~8$ or $\approx~4$ cycles per degree) to the Fourier amplitude spectrum of each image (see Figure \ref{fig:faces}).
+A zero-mean Gaussian pixel noise (R.M.S. contrast, $\sigma = 0.005$) was added to the test image on each trial to allow comparison with the ideal observer (see Supplementary Materials \ref{sec:ideal_observer}).
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figs/stimuli.pdf}
+\caption{Stimuli used in the experiment.
+The left panel shows each stimulus face; each column shows one of the five possible viewpoints.
+The right panel shows an example of the blur kernels used.
+The top image depicts the 32 cycle per image cutoff, the bottom image depicts the 16 cy / image cutoff.
+}
+\label{fig:faces}
+\end{figure}
+
+\subsection{Perimetry}
+\label{sec:perimetry}
+Microperimetry testing was conducted with an OCT/SLO microperimeter (OPTOS PLC).
+The extent of central field loss was assessed by having patients fixate a cross presented in the centre of the display, while a Goldmann III test stimulus (0.43 deg disk) was presented for 200 ms at each of 52 radially-organized locations within a 21 degree diameter circle centred around the initial fixation location.
+Seven patients (P03, P04, P06, P07, P08, P11 and P12) were tested with a modified threshold strategy, five patients (P01, P02, P05, P09 and P10) with a suprathreshold strategy.
+The testing regime was chosen depending on the clinical appropriateness for each patient, not as part of a research protocol. 
+Suprathreshold testing entails the presentation of a target at an intensity that is anticipated to be seen (0 dB attenuation) and the patient indicates when the target is detected by pressing a button.
+In modified stepwise threshold testing (using a 0-10-16 technique), a -10 dB point is presented on the first trial then lowered to -16 dB if seen or 0 dB if not seen.
+Testing positions that elicit no response suggest field loss.
+During testing, fixation is continuously monitored.
+Thus, a measure of fixation stability can be obtained (defined as fixations that remain within 2 degrees and 4 degrees of initial fixation).
+Unfortunately we were unable to save raw fixation coordinates due to computer malfunction, meaning that the more sensitive fixation measure of the Bivariate Contour Ellipse Area \citep[BCEA; see][]{Crossland:2009gf} could not be calculated.
+However, since we observe credible correlations with our relatively blunt measure of fixation stability, the BCEA would likely only strengthen the relationships we observe.
+
+All but one patient failed to report at least one microperimetry target entirely.
+The remaining patient (P06), tested in a modified threshold regime, detected all targets but required increased brightness relative to unimpaired vision (relative deficits).
+All other patients who were tested with a modified threshold strategy showed relative deficits in addition to their failures to report targets at the highest brightness (see for example P04 in Figure \ref{fig:classification}).
+All patients can therefore be considered to have some central vision loss (see Table \ref{tab:perimetry}).
+
+
+
+%---------- Perimetry table ------------
+\begin{table}[ht] \footnotesize
+\caption{Perimetry data for patients with low vision.
+The fixation percentages denote the percentage of all fixations made within 2 or 4 degrees of the centre of the testing grid.
+Any subject who showed both good fixation stability and reported seeing any of the four perimetry targets presented around the anatomical fovea was classified as having a functional fovea (LV:F).
+While P06 did not miss any perimetry targets at the highest intensity, extensive relative deficits were evident with lower intensity targets.
+}
+\label{tab:perimetry}
+\begin{tabularx}{\textwidth}{lllllll}
+Code & 2 deg fixation (\%) & 4 deg fixation (\%) & Perimetry targets missed (\%) & Analysis group \\ \midrule
+P01 & 57 & 94 & 2 & LV \\
+P02 & 9 & 37 & 46 & LV \\
+P03 & 100 & 100 & 67 & LV:F \\
+P04 & 41 & 99 & 13 & LV \\
+P05 & 42 & 100 & 44 & LV \\
+P06 & 100 & 100 & 0 & LV:F \\
+P07 & 18 & 100 & 42 & LV \\
+P08 & 41 & 80 & 2 & LV \\
+P09 & 76 & 100 & 83 & LV \\
+P10 & 100 & 100 & 6 & LV:F \\
+P11 & 72 & 100 & 4 & LV \\
+P12 & 100 & 100 & 2 & LV:F \\
+\end{tabularx}
+\end{table}
+
+\subsection{Procedure}
+Participants completed a single interval 10 alternative forced choice face identification task.
+Observers freely viewed the display (binocular presentation, no restriction on eye movements) from approximately 57~cm and at this distance the test face images subtended 8.4 by 8.8 degrees (width by height) of visual angle.
+On each trial the observer saw a fixation point in the centre of the screen presented for 200~ms, followed by a test face image presented in the centre of the screen for 500~ms.
+The identity, view-point, and blur-level of the test face was randomly selected each trial.
+After the test image disappeared, 10 smaller images (6.1 by 6.4 degrees of visual angle) of each face were presented in a grid of 5 columns by 2 rows on the screen.
+These faces were of the 10 individuals from the face set and were presented in random order, at the same viewpoint as the test image, but without blur.
+The observer used the arrow keys on the keyboard to move a response selection rectangle over the response faces, then pressed the space-bar to enter their response.
+If the observer was unable to use the keyboard, they pointed at a face and the experimenter keyed in their response.
+The ten response-selection faces remained onscreen until a response was entered.
+If the observer's response was correct then a clearly audible high-pitched tone was played; if the observer's response was incorrect a tone of lower pitch was played.
+Prior to the experimental trials, each observer completed 5 practice trials to introduce them to the task.
+
+Each observer completed 3 blocks of 75 trials, except one control subject (C02), who completed 3 blocks of 150 trials, and three patients (P07, P08 and P09) who completed only one, two and one blocks respectively.
+The three levels of blur were each tested 25 times per block, in a random order for each subject.
+
+Three of the patients with low vision (P02, P04 and P05) received an instruction manipulation designed to improve their guidance of eye movements to important regions of the faces.
+After completing the first block of trials, these subjects were instructed to ``focus on the eyes, nose and mouth'' by the experimenter, who asked the subject to practice by looking at the experimenter's face.
+This manipulation was designed to ensure that patients were placing regions of functional retina over facial features important for identification as far as possible.
+However, a pilot analysis showed no evidence that the instruction improved performance beyond a simple learning effect.
+All of these patients reported that they were already able to place their gaze to perceive important facial features, making it unlikely that this instruction manipulation would have any further effect.
+We therefore group together patients who received this instruction manipulation with patients who did not in further analyses.
+
+\subsection{Data Analysis}
+
+To analyse this data we used a multi-level logistic Generalised Linear Model (GLM; see Supplementary Material \ref{sec:hierarchicalBayes} for details).
+Multilevel models are extensions of traditional regression models that treat regression parameters themselves as conditional on higher-order structure in the data \citep{Gelman:2006jh,Gelman:2007te}.
+Our data has hierarchical structure in that some parameters (such as a given subject's performance level) can be considered to arise from distributions of mean performance within a group (such as ``control'' or ``low vision''), which themselves are conditional upon an overlying population distribution of mean performance level (the distribution for humans).
+Intuitively, this is similar to running three regressions: one on the data for each subject to find the parameter weights at the subject level, a second on the weights from the first regression to estimate the group parameters, and a third on the group estimates to find the population-level parameters.
+Here, however, all of these parameters are estimated simultaneously rather than in a stepwise fashion as implied by this example.
+
+A multilevel Bayesian model like the one we use is a more general form of the more common multilevel generalised linear mixed model, which has been recently promoted within the psychophysics \citep{moscatelli:2012,Knoblauch:2012ww} and clinical vision literature \citep{Cheung:2008hc} since it allows the analysis of data on the population level.
+A mixed model is ``mixed'' because it contains both fixed effects (in which a parameter is not allowed to vary at some level of the model) and random effects (for which the uncertainty in the parameter estimates is considered throughout all levels of the model).
+One way to consider a fixed effect is that it is a special case of a random effect, in which the variance parameter is set to be zero \citep[i.e. there is no uncertainty around the point estimate of the parameter; see ][ p.245]{Gelman:2007te}.
+In the framework we employ, all parameters can be thought of as random effects \citep{Gelman:2007te}.
+This treatment has the desirable characteristic that uncertainty at all levels of the model is considered at all others (rather than reducing the model to a point estimate at some level), and that this uncertainty can be propagated into predictions.
+For our data set, this is particularly useful since not all subjects completed the same number of trials.
+Therefore our approach takes the individual subject uncertainties into account when we make inferences at the group level.
+
+We base statistical inferences on the full Bayesian posterior distribution of credible parameter values rather than on null hypothesis significance testing.
+Desirable properties of this approach are discussed briefly in the Discussion.
+Since the posterior distributions for the models we use are not derivable analytically, we numerically estimate proportional distributions using Markov Chain Monte Carlo (MCMC) sampling implemented in the Stan package \citep{stan-software:2013,Hoffman-Gelman:2012}.
+Results were analysed using the R statistical computing environment \citep{r_core_development} using additional packages \citep{wickham_ggplot2_2009,wickham_split_2011,Xie:tt}.
+The estimate of the posterior distribution for the primary analysis is based on 4 independent chains of 100,000 samples using the NUTS II sampling method \citep{Hoffman-Gelman:2012}, with half of those samples being warmup (adapting the step size of the sampler), and saving every 100th sample to reduce both autocorrelation in the chains and data file size, resulting in 2,000 final samples.
+Convergence was assessed by the $\hat{R}$ value \citep[the ratio of between-to-within chain variance; see][]{Gelman:1992ts} as well as by inspection of traceplots.
+Code to perform these analyses and raw data can be found on the first author's Github page (\url{https://github.com/tomwallis/microperimetry_faces}).
+
+We were primarily interested in how performance differed between the three groups as a function of the blur level.
+In addition, since there could have been a learning effect and not all participants completed the same number of blocks, we included a covariate for block.
+The trial-by-trial (correct or incorrect) data for each subject was modelled as a linear function of the log high frequency cutoff of the blur filter and the block:
+
+\begin{equation}
+\label{eq:linear_predictor}
+\eta = a + b \cdot \log_{10} (\mathrm{HFC}) + c \cdot \mathrm{block}
+\end{equation}
+
+This yielded three free parameters for each subject: intercept $a$, blur slope $b$ and block slope (linear learning effect) $c$
+\footnote{Including age as an additional covariate did not substantively change our conclusions, and additional covariates such as visual acuity cannot be included in this model since they were reported as corrected to normal for control subjects, in which case there is no variation in acuity among controls.}.
+In addition, to make the regression coefficients easier to interpret
+\citep[see][p.55]{Gelman:2007te}, we centred each input predictor by subtracting the mean (or 2 in the case of block).
+Therefore the intercept parameter represents performance when blur was at its mean in the second block.
+We additionally examined a model (not shown here) that contained an interaction term between block and blur slope.
+The interaction term was not credibly different from zero so we excluded it for simplicity.
+The linear predictor $\eta$ is then passed through the inverse logit function to give the expected value for a Bernoulli trial, with an additional lower bound of 0.1 (reflecting chance performance).
+
+For the two conditions in which we imposed physical stimulus blur, the high frequency cutoffs correspond to 32 cycles per image (less blurry) and 16  cy / image (more blurry).
+However, for the un-blurred condition no frequencies were filtered.
+To express the un-blurred condition on the same scale, we assume the high frequency cutoff to be the Nyquist limit of the stimulus, which given that our images were 372 pixels square, the highest frequency present in our stimuli was 186 cy / image, $\approx$ 46 cy / deg.
+
+Each coefficient from each subject is hypothesised to arise from a distribution for that subject's group.
+A population hyperparameter is also placed over all groups, causing group differences to be pulled towards the population mean and making our inferences on group differences more conservative where parameter estimates are uncertain.
+The full specification of the model is provided in the Supplementary Materials (\ref{sec:hierarchicalBayes}), along with a discussion of the tolerance of our conclusions to the prior distributions chosen.
+All groups are given the same mean (of zero) and variance (broad) in their regression parameters \textit{a priori}, so it is not the case that our use of priors trivially presumes the conclusion we report.
+
+\section{Results}
+
+<<do_sampling>>=
+# uncomment this line to run the mcmc sampler.
+# you may need to adjust the sampler (currently set to use four cores in parallel) for your system.
+# source(paste0(getwd(),'/funs/final_results_model_sampler.R'))
+@
+
+
+
+<<do_predictions>>=
+source(paste0(getwd(),'/funs/calc_pred_p.R'))
+@
+
+\subsection{Recognition performance}
+\label{sec:recognition_results}
+
+Figure~\ref{fig:subj_performance} shows recognition performance for each subject for each blur level and block, with the corresponding fits of the multi-level model at the subject level.
+Each MCMC sample post-warmup represents a plausible value of the posterior probability over the full parameter space.
+We computed a distribution of expected proportion correct for a continuum of blur values from the subject-level parameters $a$, $b$ and $c$ for each of the post-warmup samples of the MCMC chains after pooling the chains.
+The solid curves in Figure~\ref{fig:subj_performance} show the mean of this distribution for each subject, and the shaded regions are the values containing 95\% of the distribution's mass: the highest-density interval (HDI).
+Unlike a frequentist confidence interval, the 95\% HDI of a posterior distribution allows us to say that, given the model and the data, there is a 95\% chance that the true parameter value lies in this interval.
+These are 95\% \textit{credible} intervals \citep[as distinct from \textit{confidence} intervals,][]{Kruschke:2011uy}.
+As expected, performance increased as a function of the logarithm of high frequency cutoff (i.e., decreased as a function of blur level) for most subjects.
+The model provides reasonable fits to the data at the individual subject level.
+
+%---------- Individual subject performance -----------
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/performance_by_subject.pdf}
+\caption{Face recognition performance as a function of high frequency cutoff (blur level) and block for each subject (note logarithmic x-axis).
+A lower cutoff value corresponds to a more blurred stimulus.
+Here the subject code displayed in the top margin corresponds to Table~\ref{tab:demographic} and the side text shows the analysis group for that subject (CS = control subjects, LV = low vision, LV:F = low vision with foveal sensitivity).
+Points show the average performance of the subject; error bars on points depict 95\% beta distribution confidence intervals.
+Solid lines represent the predictions of the Bayesian multilevel model at the subject level and shaded regions represent 95\% credible intervals for these predictions.
+}
+\label{fig:subj_performance}
+\end{figure}
+
+Each subject's three free parameters are conditional on the parameters of their group, which are themselves conditional on the population-level parameters.
+Therefore, the data from one subject inform the fits to the data of another subject, more so for subjects in the same group.
+Statistical inferences at the group level can be made by comparing the group-level parameter distributions.
+Of principal interest here is the group-level distribution for performance as a function of blur.
+
+Predictions at the group-level are shown in Figure~\ref{fig:group_performance}, and were derived from the MCMC samples as in the subject-level data.
+It can be seen that the control subjects (CS) had higher performance than the patients with low vision (LV) using diseased retina or with unstable fixation.
+In addition, those patients with low vision (LV:F) with remaining foveal sensitivity are similar to control subjects in their performance.
+
+
+%---------- Group-level performance -----------
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/performance_by_group.pdf}
+\caption{Face recognition performance as a function of high frequency cutoff (blur level) for each group (note log unit x-axis).
+A lower cutoff value corresponds to a more blurred stimulus.
+Points show each group mean, and error bars depict +/- 1 s.e.m between subjects.
+Solid black lines represent the predictions of the Bayesian multilevel model at the group level and shaded regions represent 95\% credible intervals on these predictions.
+Faint grey lines connect the mean proportion correct for each subject (data replotted from Figure \ref{fig:subj_performance}, averaged across block).
+}
+\label{fig:group_performance}
+\end{figure}
+
+The group differences apparent in Figure~\ref{fig:group_performance} can be formally compared by calculating the difference score between parameter estimates in each MCMC sample to create a distribution of difference scores.
+That is, we calculate the value of the linear predictor for each MCMC sample (Equation \ref{eq:linear_predictor}), at each block and blur level, then apply the inverse logit to convert these values into predicted probability correct, then take a difference score between the groups for each sample.
+We then base our inferences about whether two groups have credibly different performance on the distribution of difference scores between those groups, by asking whether 0 (i.e., no difference) is within the range of credible values \citep{Kruschke:2011uy}.
+Note that no correction is necessary for making multiple comparisons since all possible comparisons are encapsulated by the full posterior distribution \citep{Kruschke:2012jy}, which remains unchanged whether we compare two parameters or many.
+The posterior distributions for the group-level parameters are provided in the Supplementary Materials (Figure~\ref{fig:coefficient_scatterplot}).
+
+At all blur levels tested, and as early as the first 25 trials
+\footnote{
+In this model, the values for parameters $a$, $b$ and $c$ are estimated from all the data.
+While strictly this means that the parameters are not independent of block, this is not important for our statement that group differences emerge as early as block one.
+The same group differences are evident after fitting a two parameter ($a$ and $b$) model to only the data from block one.
+}
+, the performance of the CS group was credibly higher than that of the LV group (Figure~\ref{fig:mean_pc_differences}).
+In addition, the LV group was credibly lower than the LV:F group.
+No credible differences were evident between the CS and LV:F group.
+
+
+% Calculate predicted mean differences at each blur, block, and generate plots:
+<<calc_mean_performances>>=
+source(paste0(getwd(),'/funs/mean_performance_diffs.R'))
+@
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/mean_performance_difference_plot.pdf}
+\caption{Mean and HDIs of pairwise comparisons between groups.
+These values are calculated from the posterior distributions of difference scores in predicted proportion correct.
+Differences are shown for each blur level at each block of trials.
+At all blur levels and as early as block 1, the CS and LV:F groups performed better than the LV group.
+}
+\label{fig:mean_pc_differences}
+\end{figure}
+
+
+%------------------------
+% Slope differences:
+
+<<blur_slope_zero_diff>>=
+source(paste0(getwd(),'/funs/blur_slope_differences.R'))
+@
+
+% Slope results:
+We can also examine both the absolute slope parameters for blur and block, and differences between groups for these slope parameters.
+Slopes credibly greater than zero signify a linear relationship between (the logit of) performance and the variable of interest (log high frequency cutoff for $b$, block for $c$; see Equation \ref{eq:linear_predictor}).
+The specific value of the slope parameter depends on the scaling of the predictor, since the slope multiplies the value of the input predictor.
+If the value of the parameter is zero this indicates no linear relationship (i.e. the logit of performance does not change linearly as a function of the predictor).
+
+For the slope as a function of the log high frequency cutoff (parameter $b$), performance for the CS and the LV:F groups increased as high frequency cutoff increased (CS mean = \Sexpr{round(cs.mid,digits=2)}, 95\% HDI = [\Sexpr{round(cs.ci,digits=2)}],
+LV:F = \Sexpr{round(f.mid,digits=2)}, [\Sexpr{round(f.ci,digits=2)}]).
+That is, as the amount of blur increased performance got worse.
+However, the slope for the LV group was not credibly different from zero (\Sexpr{round(lv.mid,digits=2)},
+\Sexpr{round(lv.ci,digits=2)}).
+This indicates that the performance of the LV group was not credibly affected by changes in blur whereas the other groups showed effects of blur such that performance improved as blur decreased (i.e.~as high frequency cutoff increased).
+However, these comparisons should be treated with caution since there were also no credible differences between the group slopes (see Supplementary Materials, Section~\ref{sec:blur_and_block_slopes}), indicating that there is large uncertainty for these comparisons.
+While all groups showed a credible learning effect (parameter $c$ was credibly greater than zero, see Supplementary Figure \ref{fig:coefficient_scatterplot}), there were no credible differences between group learning rates (Section~\ref{sec:blur_and_block_slopes}).
+
+
+\subsection{Correlations between visual function measures}
+
+<<scatterplots>>=
+source(paste0(getwd(),'/funs/scatterplots.R'))
+@
+
+
+<<compute_correlations>>=
+source(paste0(getwd(),'/funs/compute_correlations.R'))
+@
+
+
+<<correlation_table,echo=FALSE,results='asis',cache=FALSE,include=TRUE>>=
+library(xtable)
+xtable(table_list$spearman_table,
+       caption="
+       Rank-order correlations (Spearman's $\\rho$) between visual function measures for patients with low vision estimated using a Bayesian framework.
+TM denotes the proportion of targets missed in perimetry, FS denotes fixation stability (percentage of fixations within 2 degrees), CS denotes Pelli-Robson contrast sensitivity, VA denotes visual acuity, and PC denotes proportion correct on the face identification task.
+The posterior mean rank order correlation coefficient is given in each cell, with 95\\% credible intervals in square brackets.
+       ",
+       label='tab:correlations',
+       align=rep('l',times=ncol(table_list$spearman_table)+1))
+@
+
+
+Scatterplots comparing clinical measures of visual function and face identification performance are shown in Figure~\ref{fig:correlations} for the patients with low vision.
+We estimated the posterior distribution over the correlation coefficients between variables using MCMC as in the main analysis; these are shown in Table \ref{tab:correlations}.
+Since these calculations are based on only 12 data points, we urge caution in drawing strong conclusions from the correlations. 
+To encourage conservative inferences, we place a weakly-informative prior distribution over the correlation matrix with greater mass on the unit diagonal.
+That is, we \textit{a priori} assign higher probability to correlations around zero (see Supplementary Materials, Section \ref{sec:bayes_correlations}), but with high uncertainty.
+
+Using the conservative rank order Spearman's $\rho$, fixation stability (FS) and visual acuity (VA) were credibly correlated with face recognition performance (i.e. the credible intervals on these comparisons did not overlap zero).
+More stable fixation and better acuity were associated with better performance.
+Contrast sensitivity was close to being credibly correlated with performance (better contrast sensitivity associated with improved performance), and fixation stability was close to credibly correlated with visual acuity (more stable fixation associated with better acuity).
+Credible intervals for all other correlation coefficients overlapped zero.
+Similar results were found using a bootstrapping approach and traditional calculations of correlation coefficients.
+
+
+%------------- Scatterplots ----------------
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/correlations.pdf}
+\caption{Scatterplots of face identification performance (proportion correct) in low vision participants as a function of scotoma level, fixation stability within two degrees, contrast sensitivity and letter acuity.
+The LV group is shown as white squares, the LV:F group as grey diamonds.
+Points show the mean performance for each subject and error bars show beta distribution 95\% confidence intervals.
+Similar patterns were found when performance was broken down for each blur level.
+}
+\label{fig:correlations}
+\end{figure}
+
+
+\section{Discussion}
+
+Many patients with pathology affecting the fovea are forced to use non-foveal retina to accomplish visual tasks.
+We examined how the extent of central field loss affected face identification.
+The LV group in our study contained individuals who failed to perceive perimetry targets centred over the anatomical fovea at maximum intensity (i.e., had dense central scotomas), demonstrated poor fixation stability, or presented a combination of these deficits (see Table~\ref{tab:perimetry}).
+This group performed worse in the face identification task compared with the other groups (see Figure~\ref{fig:group_performance} and Figure~\ref{fig:mean_pc_differences}).
+Patients classified into the LV:F group saw at least one of the perimetry targets centred over the anatomical fovea and showed stable fixation.
+Unlike the LV group, the LV:F group performed similarly to control subjects despite having either dense or relative deficits in their central visual field (see Table~\ref{tab:perimetry}).
+The data also suggest that a patient's letter acuity and fixation stability during perimetry are correlated with difficulties in face recognition.
+For this task, functional macular retina seems to be the primary determinant of performance among a group of patients with varied degrees of paracentral field loss.
+
+We also examined how stimulus blur affected face identification in these groups.
+We expected that blur would only affect performance in participants who could resolve high spatial frequencies and thus visual function would be limited by the lower bound of blur in the stimulus or visual resolution.
+Face identification performance steadily decreased as blur increased for normally-sighted and patients with low vision with (at least partially) functional foveal vision: the slope parameters for these groups were credibly different from zero.
+Patients with low vision and scotomas including their fovea (the LV group) were relatively unaffected by stimulus blur, performing worse than control subjects and LV:F subjects at every blur level tested and as early as the first block of trials (see Figure~\ref{fig:mean_pc_differences}).
+As expected, the LV group showed poor performance at all levels of blur, whereas the group with intact foveal function (LV:F) showed a consistent reduction in performance as a function of blur, similar to controls.
+While we did not track the gaze position of our participants during the face recognition task, the result is consistent with LV subjects using peripheral vision to perform the task.
+The limiting factor on the performance of the LV group is likely to be the poor resolution of non-foveal vision rather than stimulus blur at the levels we imposed.
+
+To provide an illustration of the level of impairment demonstrated by LV patients in the context of our experiment, we calculate how much the stimulus would need to be blurred for control subjects to produce the same performance as the LV group with no stimulus blur.
+For an unblurred stimulus, patients in the LV group have an average performance level of approximately 46\% (see Figure \ref{fig:group_performance}).
+According to the model, the control group would need a blur cutoff of $\approx$ 0.8 cy / degree to reach a performance of 46\% correct on average.
+A face stimulus filtered with this blur level is depicted in Figure \ref{fig:equiv_blur}.
+Within the context of stimulus blur, the amount of information LV patients can extract from a face is clearly limited.
+Of course, many factors influence performance as stimuli move away from the foveal retina, such as reduced contrast sensitivity \citep{Kelly:1984uc} and crowding \citep{bouma_interaction_1970}.
+We do not claim that the reduced performance of the LV group here is caused by intrinsic blur alone, nor does this demonstration mean that stimuli appear blurred to LV patients, owing to sharpness overconstancy \citep{Galvin:1997un}.
+We provide this illustration to give the reader some intuition as to the level of impairment shown by these patients in comparison to normally-sighted individuals.
+
+
+%---------- Equivalent blur figure------------
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.2\textwidth]{figs/blur_cutoff.jpg}
+\caption{An unblurred face (top) and the same face blurred to the level our model predicts would produce performance in control subjects equivalent to the LV group with no stimulus blur (see Figure \ref{fig:group_performance}).
+The lower image gives some intuition as to the level of impairment demonstrated by LV patients in our task.
+}
+\label{fig:equiv_blur}
+\end{figure}
+
+Some patients spontaneously used a preferred retinal locus (PRL) during perimetry.
+We cannot say whether these patients also used a PRL to perform face recognition because gaze position was not monitored in this task.
+Since these patients showed no sensitivity in the fovea they were included in the LV group for analysis.
+In addition, as faces in the recognition task were viewed binocularly and perimetry was monocular, any conclusions we could draw about the influence of a monocular PRL in our task are limited.
+This may be improved in future studies by using binocular perimetry (currently in development; see Timberlake, et al., IOVS 2013; 54: ARVO E-Abstract 2182).
+
+Visual acuity and fixation stability correlated with face recognition performance.
+More stable fixation and better letter acuity were associated with higher task performance.
+Visual acuity and fixation stability were also correlated with each other: patients with worse acuity also tended to have more difficulty holding fixation.
+This contrasts with previous studies \citep{vonNoorden:1962vi,Timberlake:1986ve,White:1990vj,Crossland:2004jq} that reported no association between visual acuity and fixation stability.
+This difference can be attributed to our intact foveal function group, who showed stable fixation and relatively good acuity, driving up the strength of this association relative to studies whose patient populations did not include patients with functional foveal vision.
+Indeed, any study that includes diverse groups of patients spanning a wide range of acuities and fixation stabilities is likely to find a stronger correlation than a study within a single group of patients.
+A scatterplot of fixation stability versus visual acuity (see Supplementary Materials, Figure \ref{fig:scatter_acuity_stability}) shows two clusters, one for each of the patient groups, with little evidence of correlations within each group (though note that the LV:F group was selected on the basis of steady fixation).
+Of course, these correlational analyses must all be treated cautiously due to our small patient sample size.
+
+It is possible that fixation stability is a more useful correlate of face recognition performance than acuity.
+Acuity was more variable than fixation stability in patients with (at least partial) foveal vision (see Figure \ref{fig:correlations}): subjects with foveal vision all showed stable fixation (100\% within 2 degrees), however, their visual acuity ranged from 20/20 to 20/70.
+Fixation stability is important for visual performance in a range of tasks;
+for example, \citet{Crossland:2004jq} showed that unstable fixation is associated with slower reading speeds.
+\citet{Dulin:2011gg} found that patients with retinitis pigmentosa (in which the macular is spared) and patients with Stargardt's dystrophy (in which the macular is diseased) performed equivalently poorly in a famous face recognition task despite showing markedly different visual acuity.
+Potentially, fixation stability is a more useful indicator of face recognition problems than acuity, despite both being associated with performance in our study.
+
+Recent work \citep{Seiple:2013ct,Seiple:2011gw,Seiple:2005jk,Glen:2013do} suggests that more general eye movement behaviour (not just fixation stability) is crucial for visual tasks in patients with visual field loss.
+For example, AMD patients with an established PRL show a different fixation pattern than controls when looking at a face; patients placed fewer fixations on the internal features (e.g., eyes) of a target face than controls \citep{Seiple:2013ct}.
+Eye movement control training can improve performance on visual tasks such as reading \citep{Seiple:2011gw}, and potentially also improve face perception.
+However, in many real-world situations people would have the opportunity to view a face for longer than in our study, so fixation stability may be less important for face perception tasks when faces are presented for extended durations.
+Conversely, fast face recognition may be required to comprehend television or films, particularly those with multiple and rapid scene cuts.
+
+The main finding of our study can be visually assessed from Figure~\ref{fig:group_performance}: the LV group performs worse than the other groups at all blur levels.
+What does our modelling add to this?
+First, it allows us to quantify the size of the differences between groups, and the performance changes as a function of blur and block.
+Second, analysing the data in a multilevel framework means that our inferences for groups with fewer participants are likely to be more robust, since these estimates will be pulled towards the population mean (``shrinkage'') to the extent that the data suggest.
+Third and most importantly, estimating the posterior probabilities over the parameter space using Bayesian inference has a number of desirable properties over traditional null-hypothesis significance testing (NHST).
+For the present application three pertinent advantages of the Bayesian approach over NHST are that inferences over the Bayesian posterior do not require corrections for making multiple comparisons, that inferences do not depend on the experimenters' intentions for stopping data collection, and that Bayesian analyses coherently handle unbalanced designs by propagating uncertainty through all levels of the model.
+Interested readers are referred to the following papers \citep{Gelman:2006jh,Gelman:2012dx,Kruschke:2010gb,kruschke_what_2010,Kruschke:2012jy,Kruschke:2011ki,wagenmakers_practical_2007,Wetzels:2009je,Wetzels:2011gr} and textbooks \citep{Gelman:2007te,Kruschke:2011uy} for recent introductions to and discussions of this type of inference, which is gaining traction in many scientific fields.
+
+As many in the field of vision rehabilitation have stated \citep[e.g.,][]{TrauzettelKlosinski:2010fr}, to offer appropriate vision rehabilitation practitioners must understand the impact of each patient's vision loss on various visual functions.
+Our patient sample included patients with very different pathologies and visual function (see Table \ref{tab:demographic}).
+While a variety of pathologies impair face recognition \citep[see also][]{Dulin:2011gg}, our results suggest the key determinant of face recognition performance was whether the fovea was preserved or impaired.
+Patients in the LV:F group recognised as many faces as control subjects despite significant field loss.
+While our experiment measured face recognition performance in an objective paradigm with high sensitivity (10 AFC), the strength of the conclusions we can draw are limited by our small sample of patients.
+An independent replication of our result in a larger sample of patients would strengthen the conclusion of this study: that patients with preserved foveal vision (but with other visual deficits) can recognise faces as well as someone with healthy vision.
+
+\section{Conclusions}
+
+We examined the effects of image blur on face identification in patients with low vision.
+Patients with at least partially preserved foveal vision and stable fixation performed similarly to normally-sighted control observers and face identification steadily decreased as stimulus blur increased.
+Patients with no foveal vision and unstable, eccentric fixation were severely impaired in the task at all levels of image blur.
+The results suggest that face recognition performance is limited by the highest spatial frequencies that are available to the observer and this may be predicted by visual acuity and fixation stability, as assessed in the clinic.
+
+\section{Acknowledgements}
+
+Designed the experiment: CPT, JW, TSAW.
+Programmed the experiment: CPT.
+Collected the data: JW.
+Analysed the data: TSAW, CPT.
+Wrote the paper: TSAW, CPT, JW, MLJ, PB.
+The authors thank Dr William H. Seiple for comments and suggestions and Ms Joy Facella-Ervolini for assistance with data collection.
+TSAW was supported by a fellowship from the National Health and Medical Research Council of Australia (634560).
+PJB was supported by NIH grants EY019281 and EY018664.
+
+\newpage
+
+\section{Supplementary materials}
+
+\subsection{Ideal observer}
+\label{sec:ideal_observer}
+Performance in our task can be compared to the performance of an \textit{ideal observer} that performs the task optimally given the information available in the stimulus.
+The optimal decision rule for this task, assuming Gaussian contrast noise, is to compute the 2D (pixel wise) cross-correlation between each possible response face and the test face, then to select the response with the maximum cross correlation \citep{Gold:1999wm,Tjan:1995uo}.
+We estimated the performance of the ideal observer as a function of the signal-to-noise ratio (SNR; for Gaussian pixel noise added to the stimulus) by computer simulation (see Figure \ref{fig:ideal}).
+For the stimulus conditions shown to observers (dashed vertical line), the ideal observer never made mistakes.
+That is, humans perform the task sub-optimally.
+
+%---------- Ideal observer psychometric functions------------
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figs/performance_ideal.pdf}
+\caption{Face recognition performance for the ideal observer as a function of the ratio of signal contrast to Gaussian luminance noise contrast (SNR), for the unblurred stimulus and high frequency cutoffs of 32 and 16 cy / image.
+The performance of the ideal observer (open circles) was evaluated via Monte Carlo simulation.
+Test faces were presented with the same three blur levels as shown to human observers, at the same white noise contrast, and at 13 additional white noise contrasts in log-spaced steps.
+The ideal observer provided 1000 simulated trials at each combination of blur and noise contrast for a total of 14,000 trials per blur level.
+Solid lines represent the fits of a Weibull GLM \citep{Knoblauch:2012ww}.
+The grey vertical line marks the SNR shown to subjects.
+Average performance in each blur condition for human subjects are shown as filled points (x position is offset to aid readability).
+The error bar on these points shows the s.e.m between subjects in each group.
+}
+\label{fig:ideal}
+\end{figure}
+
+The ratio of ideal-to-human performance (``absolute efficiency'') is usually used to quantify this sub-optimality.
+We cannot compute this measure here since we did not measure full psychometric functions for human performance as a function of the SNR; we arbitrarily selected an SNR to present to the human observers.
+That is, in Figure \ref{fig:ideal}, the horizontal location of the human data is arbitrary and the slope of human performance as a function of contrast noise level is unknown.
+
+However, some sense of the discrepancy between human and ideal can be gained from the ideal observer's psychometric functions in Figure \ref{fig:ideal}, as the ideal observer requires $\approx$ 2 log units more noise contrast than humans to even begin to make mistakes, and around 4 log units to reach equivalent performance to humans.
+This is consistent with previous studies that have found that face recognition efficiency is extremely poor even in normally-sighted observers \citep{Gold:1999wm,Makela:2001tx,Melmoth:2000vk,nasanen1999spatial}.
+In contrast, relatively good efficiencies have been shown for other tasks, such as simple detection \citep{kersten1987statistical,Taylor:2009wb} and for extracting information about a data set from graphs \citep{Legge:1989uh}.
+This comparison suggests that human face recognition in tasks such as ours must be limited mainly by constraints inherent to the visual system rather than by a lack of information in the stimulus.
+
+By measuring the full psychometric functions for face recognition in patients with low vision as a function of SNR, future studies could determine the theoretical limit on performance improvements expected from image modification techniques (such as contrast enhancement) for a particular task.
+If humans are primarily limited by internal noise rather than by noise in the stimulus, it is possible that no amount of stimulus enhancement could effect performance improvement.
+Potentially, knowing the limits of internal noise could help direct low vision research to effectively target visual tasks in which improvements could be expected given particular stimulus changes or training.
+
+
+\subsection{Multilevel model and Bayesian inference}
+\label{sec:hierarchicalBayes}
+
+We fit the data with a multilevel model with three levels of parameters: subject, group and population \footnote{R code for reproducing this analysis is available from the first author's Github page: \url{https://github.com/tomwallis/microperimetry_faces}}.
+The trial-by-trial binary correct or incorrect response data $y$ for each subject $i$ in group $j$ were assumed to arise from a Bernoulli distribution with expected value $p$:
+
+\begin{equation}
+y_{ij} \sim \mathrm{Bernoulli}(p_{ij})
+\end{equation}
+where the $\sim$ symbol denotes ``is distributed as''.
+The expected value $p$ was modelled as a logisitic function with a lower asymptote $\gamma$, fixed at the chance performance level of 0.1:
+
+\begin{equation}
+\label{eq:p}
+p_{ij} = \gamma + (1 - \gamma) \times \mathrm{logit^{-1}}(\eta_{ij})
+\end{equation}
+
+where the inverse logit function is $1 / (1 + \exp(-\eta))$.
+The linear predictor $\eta_{ij}$ for subject $i$ was given by a linear function of the intercept $a$ plus a slope coefficient of log high frequency cutoff $b$ plus a slope with block $c$ (to capture any linear effect of learning):
+
+\begin{equation}
+\label{eq:eta}
+\eta_{ij} = a_{ij} + b_{ij} \log_{10}(\mathrm{HFC}) + c_{ij} \mathrm{block}
+\end{equation}
+
+The three coefficients from each subject were assumed to arise from a group-level distribution:
+
+\begin{equation}
+      a_{ij} \sim \mathrm{Normal} (\mu_{j}, \sigma_{j})
+\end{equation}
+
+Since the same structure is used for all coefficients we simplify the notation here to only refer to one, but the model contained parameters $\mu_{j}$ and $\sigma_{j}$ for all coefficients.
+The group level mean and standard deviations are themselves conditional upon population-level distributions:
+
+\begin{equation}
+	\begin{array}{lcl}
+		\mu_{j} & \sim & \mathrm{Normal} (\mu_{\mu}, \sigma_{\mu})
+		\\
+		\sigma_{j} & \sim & \mathrm{Gamma}(\alpha_{\sigma}, \beta_{\sigma})
+	\end{array}
+\end{equation}
+
+Here we use the subscripted letter to denote the group-level parameter that is conditional on the higher-level parameter.
+$\mathrm{Gamma}$ denotes a gamma distribution with shape $\alpha_{\sigma}$ and scale $\beta_{\sigma}$.
+A gamma distribution is used for the standard deviation parameter $\sigma_j$ since standard deviation cannot be negative and the gamma distribution is only defined for non-negative values.
+
+To estimate the posterior distribution over model parameters using Bayes' rule, it is necessary to specify prior distributions on the model parameters.
+In this respect our entire model structure can be considered a ``prior'' \citep[see ][]{Gelman:2007te}: we believe it is logical to structure the model with individual subjects nested in groups, and groups nested in populations.
+Having defined this model structure in which low level parameters are conditional on higher-level parameters, we now must specify priors for the top-level hyperparameters (i.e. at the population level).
+The credible values for the lower levels of the model are then calculated based on the top-level priors and the data.
+We take the approach of using vague prior distributions (i.e. with large variance) reflecting a relatively agnostic stance on the model parameters.
+Since these distributions reflect large uncertainty about the true parameter values, they are quickly overwhelmed by the data causing them to have little influence on the posterior distribution \citep{Kruschke:2012jy}.
+The model results presented in the paper are fit with the following priors on the population level:
+
+ \begin{equation}
+	\begin{array}{lcl}
+		\mu_{\mu} & \sim & \mathrm{Normal}(0,3)
+		\\
+		\sigma_{\mu} & \sim & \mathrm{Uniform}(0,10)
+		\\
+		m_{\sigma} & \sim & \mathrm{Uniform}(0,10)
+        \\
+		sd_{\sigma} & \sim & \mathrm{Uniform}(0,10)
+	\end{array}
+\end{equation}
+
+We specify priors on the mean $m_{\sigma}$ and standard deviation $sd_{\sigma}$ of the Gamma distribution for $\sigma_j$ since it is more intuitive to place priors over the mean and deviation than over shape and scale (see for example \citet[][, Figure 9.8, page 170]{Kruschke:2011uy}.
+These parameters are then reparameterised into shape and scale for the gamma distribution as:
+
+ \begin{equation}
+	\begin{array}{lcl}
+		\alpha_{\sigma} & = & m_{\sigma}^2 / sd_{\sigma}^2
+        \\
+		\beta_{\sigma} & = & m_{\sigma} / sd_{\sigma}^2
+	\end{array}
+\end{equation}
+
+
+To summarise the model using the blur slope coefficient $b$ as an example, the parameter $b$ for subject $i$ in group $j$ is hypothesised to arise from a group normal distribution with mean $\mu_{j}$ and standard deviation $\sigma_{j}$.
+The mean of each group's blur slope is conditional upon a single population normal distribution with mean $\mu_{\mu}$ and standard deviation $\sigma_{\mu}$, and the standard deviation of each group's blur slope is conditional upon a single population gamma distribution with shape $\alpha_\sigma$ and scale $\beta_\sigma$.
+These population-level distributions are given weakly-informative priors.
+For MCMC sampling the model was parameterised slightly differently, with each model coefficient described as a shifted-and-scaled distribution of errors to increase sampling efficiency \citep{stan-manual:2013}.
+For more details than can be described here, please see the analysis code on the first author's Github page.
+
+To understand why these priors represent vague values we must consider the scale of the model space.
+We tested three levels of high frequency cutoff (186, 32, and 16), and the model is fit to the logarithm of these (2.27, 1.50 and 1.20).
+The value of $p$ (Equation \ref{eq:p}) can range from 0.1 to 1.
+The value of $\eta$ (given by Equation \ref{eq:eta}) is unbounded (i.e. from negative to positive infinity), but for practical purposes resides in the range of -2.5 to 2.5 (which give expected values of 0.106 and 0.994).
+Therefore, for any given pairing of intercept $a$, blur slope $b$ and block slope $c$, the value of Equation~\ref{eq:eta} becomes relatively meaningless outside of the + / - 2.5 range, so the values of these parameters must produce an $\eta$ around this range.
+For example, the prior on $\mu_{\mu}$ for all parameters has a mean of zero, together corresponding to an $\eta$ of 0 and an expected performance level of 0.55 (including $\gamma$, the lower bound correction for chance performance).
+The standard deviation of 3 spreads most of the prior certainty over a range of -6 to +6 (i.e. 2 standard deviations around the mean of zero), which can be seen to over-span the useful range of the parameter space and therefore represents a relatively flat prior centred on zero.
+
+This prior can be compared to the group-level posteriors in Figure~\ref{fig:coefficient_scatterplot}.
+The posterior distributions for all groups fall within the range of -0.5 to 2, and the central tendency for three of the groups lie between values of 0.5 and 1.
+That is, the data has caused the posterior densities to become more certain (less variable) than the weak prior and also to shift away from the prior mean of zero for three of the groups, to the extent that the data suggest that the true mean is different.
+The uniform prior over variance parameter $\sigma_{\mu}$ in the range of 0 to 10 indicates that we are uncertain about the true variance between the groups on intercept $a$ and slope $b$.
+Group variance hyperpriors $m_{\sigma}$ and $sd_{\sigma}$ are given uniform priors over the range of 0 to 10.
+This selection of priors allows the variance between individuals in the group to take on a wide range, from individuals being similar to individuals being dissimilar.
+
+%---------- Group-level parameters -----------
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/coefficient_scatterplot.pdf}
+\caption{Samples from the posterior distribution for intercept, slope of high frequency cutoff (blur), and slope of block (learning) parameters at the group level.
+Samples from the final MCMC chain are shown as coloured points, with mean and 95\% credible intervals (HDIs) shown as black points and error bars.
+}
+\label{fig:coefficient_scatterplot}
+\end{figure}
+
+Multilevel models have the desirable property of creating ``shrinkage'' between individual subject estimates.
+Since subjects are assumed to be drawn from a common population, estimates of their effects ``share strength'' which has the effect of reducing the influence of outliers on inference from the model fits \citep{Gelman:2006jh}.
+Estimates of individual subject effects therefore lie between the completely pooled population estimates (fitting a single model to all data across subjects, or equivalently fixing $\sigma_{\mu}$ to be zero) and the within-subjects effects (fitting independent models to each subject).
+The degree of shrinkage is dictated by the data and the prior, since we estimate $\sigma_{\mu}$ from data: if subjects or groups show highly variable performance, the population-level parameter estimates will be very uncertain and there will be little shrinkage.
+If many subjects show similar estimates except for one, the estimate of that subject's true mean will be strongly pulled towards the (otherwise highly certain) population estimate.
+This reduces the influence of outliers on inferences made on the population scores in a principled way \citep[see][for further examples]{Gelman:2004tc,Kruschke:2012jy,Kruschke:2011uy}.
+
+Like any choice of statistical model, the hierarchy we hypothesise here along with the specific prior distributions we use can be regarded as ``priors'' \citep{Gelman:2004tc}.
+How robust are our conclusions to the modelling choices we make?
+We have tested several alternative models and discuss one here.
+We examined a similar model to the one reported in the paper, but without the third (population) level hyperparameters.
+That is, the fits to each group are completely independent, and no shrinkage will occur between group estimates.
+The results of this fitting showed greater uncertainty for the group-level parameters compared to the 3-level model as expected, but the key results of the paper did not change substantively.
+Since we wish to draw inferences about human performances on our task, we believe the use of the 3-level model in the paper is justified.
+The top-level hyperparameter helps the data constrain credible values for model parameters in groups with less data, as well as drawing all groups towards the grand mean where less data are available, theoretically producing more robust predictions.
+We believe this choice should be acceptable to a skeptical reader, since it is far from trivially presuming our result by specifying it in our prior: the prior assumes that all the groups are the same, with large uncertainty; the group differences we observe in the posterior are purely driven by the data.
+
+\subsubsection{Bayesian correlation coefficients}
+\label{sec:bayes_correlations}
+
+To compute Bayesian correlation coefficients we estimate the posterior over the correlation matrix between the five predictor variables.
+We first compute the rank orders of the data matrix, then normalise these ranks (z-score) to compute the Spearman rank order correlation coefficient. 
+These data are considered to arise from a multivariate normal distribution with a mean of zero and a covariance matrix that is estimated from the data and the prior.
+To encourage conservative inference, we place weak \textit{a priori} credibility on correlations of zero using the following correlation matrix prior distribution \citep[see][p. 315]{stan-manual:2013}:
+
+\begin{equation}
+M (\Sigma | \alpha) \propto \det (\Sigma) ^ {\alpha - 1}
+\end{equation}
+
+where $\alpha$ is a shape parameter and $\Sigma$ is a positive definite symmetric matrix with unit diagonal (i.e. a correlation matrix). 
+When $\alpha$ is one, the prior has uniform density (i.e. all correlation matrices are equally plausible).
+As $\alpha$ approaches infinity, the prior becomes the identity matrix (i.e. all correlations are zero).
+We set $\alpha$ to be 2, which is a weak prior that represents the belief that zero correlations are more plausible than strong correlations, but with high uncertainty.
+
+Estimating the correlation coefficients in this way did not produce drastically different conclusions from traditional statistical estimation. 
+In a bootstrapping regime we found that visual acuity and fixation stability were significantly associated with performance (Spearman's $\rho$), consistent with the conclusions of our Bayesian approach.
+In addition, the association between fixation stability and acuity was also significant, where it did overlap zero in our method. 
+We believe our method is the more conservative approach, since bootstrapping estimates can be unstable with such few data.
+
+
+\subsection{No differences evident for blur slope and block slope}
+\label{sec:blur_and_block_slopes}
+
+There were no credible differences between the groups in either blur slope or in learning over blocks (see Figure~\ref{fig:slope_differences}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/parameter_difference_plot.pdf}
+\caption{Mean and HDIs of the distributions of difference scores between group level parameters for blur slope and learning slope.
+No credible differences are observed (all distrbutions overlap zero).
+}
+\label{fig:slope_differences}
+\end{figure}
+
+<<slope_differences,include=FALSE,cache=TRUE>>=
+source(paste0(getwd(),'/funs/calculate_slope_differences.R'))
+@
+
+
+\subsection{Correlation between acuity and fixation stability}
+
+It is possible that the correlation between acuity and fixation stability we observe is driven by the use of diverse patient populations, and that within each group there is little evidence for a correlation.
+
+Below is a scatterplot of these data.
+It is extremely difficult to draw conclusions about this due to the limited group size, however it is entirely possible that little correlation exists within the LV group.
+Note that LV:F patients were selected partly on the basis of their good fixation stability, and so the lack of relationship here is by design.
+
+
+%------------- acuity vs fixation stability ----------------
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figs/acuity_stability_scatter.pdf}
+\caption{Scatterplot of fixation stability versus letter acuity.
+The LV group is shown as white squares, the LV:F group as grey diamonds.
+}
+\label{fig:scatter_acuity_stability}
+\end{figure}
+
+\newpage
+
+\bibliography{library}
+
+\end{document}
