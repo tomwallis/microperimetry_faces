@@ -10,7 +10,7 @@ These files are released under the GPL-3 License. I don't offer any support. You
 Wallis, T.S.A., Taylor, C.P.T., Wallis, J., Jackson, M.L. and Bex, P.J. (under review). Characterisation of field loss based on microperimetry is predictive of face recognition difficulties.
 
 Subdirectories in this repository
-========
+-----------------
 The main file is manuscript.Rnw in the parent directory.
 Other directories are:
   * /data/ contains all the raw data files from the experiment.
@@ -21,13 +21,11 @@ Other directories are:
 
 
 Data organisation
-========
-
+-----------------
 Very raw data is contained in the /data/ subdirectory. If you're looking for a nice file to import all the data into your analysis program of choice, use /output/data.txt, which is a delimited text file including column headers. Each row is a trial in the face recognition experiment.
 
 Reproducing the analysis
-========
-
+-----------------
 The analyses in the paper were performed in R, using various libraries.
 The main file is "manuscript.Rnw". This is an R Sweave file (to be compiled using
 knitr).
@@ -41,8 +39,7 @@ You may need to uncomment some source() functions, for example, to run the MCMC 
 I will post more detailed instructions for reproducing the analysis soon.
 
 License
-========
-
+-----------------
 Copyright 2013, Thomas Wallis.
 
 This is free, open source software released under the GPL-3 License. See LICENSE.txt for details.
