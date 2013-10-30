@@ -206,7 +206,7 @@ The observers viewed the display under normal room illumination, and the mean lu
 To increase the contrast resolution of the display, a bit-stealing routine was used to increase the number of grey-levels from 6-bits to 8.8 bits \citep{Tyler1997}.
 The stimuli were monochromatic photographs of faces presented at three levels of blur.
 Figure~\ref{fig:faces} depicts examples of representative face stimuli.
-\citet{Gaspar2008} provide a detailed description of how the faces were photographed and processed, thus only a brief description will be provided here \footnote{The face stimuli used in the experiment are available at \url{http://www.tomwallis.info/demos-resources}}.
+\citet{Gaspar2008} provide a detailed description of how the faces were photographed and processed, thus only a brief description will be provided here \footnote{The face stimuli used in the experiment are available upon request}.
 The face set contains photographs of 10 individuals (five female), all Caucasian, with a mean age of twenty-four years; none of the models had facial hair, visible piercings, tattoos, or eye glasses.
 All the face images were cropped with an oval window with a width:height ratio of 1.5 to remove all clothing and hair.
 Each model was photographed from 5~view-points.
@@ -507,9 +507,9 @@ That is, we \textit{a priori} assign higher probability to correlations around z
 
 Using the conservative rank order Spearman's $\rho$, fixation stability (FS) and visual acuity (VA) were credibly correlated with face recognition performance (i.e. the credible intervals on these comparisons did not overlap zero).
 More stable fixation and better acuity were associated with better performance.
-Contrast sensitivity was close to being credibly correlated with performance (better contrast sensitivity associated with improved performance), and fixation stability was close to credibly correlated with visual acuity (more stable fixation associated with better acuity).
 Credible intervals for all other correlation coefficients overlapped zero.
-Similar results were found using a bootstrapping approach and traditional calculations of correlation coefficients.
+Similar results were found using a bootstrapping approach and traditional calculations of correlation coefficients, with the exception that fixation stability and visual acuity were significantly correlated with each other. 
+We believe our more conservative approach here is warranted given the small number of data points.
 
 
 %------------- Scatterplots ----------------
@@ -572,10 +572,11 @@ This may be improved in future studies by using binocular perimetry (currently i
 
 Visual acuity and fixation stability correlated with face recognition performance.
 More stable fixation and better letter acuity were associated with higher task performance.
-Visual acuity and fixation stability were also correlated with each other: patients with worse acuity also tended to have more difficulty holding fixation.
+Using our Bayesian estimation of correlation coefficents, we also found no credible association between visual acuity and fixation stability. 
+However, a bootstrapping estimation procedure showed this association to be significant.
 This contrasts with previous studies \citep{vonNoorden:1962vi,Timberlake:1986ve,White:1990vj,Crossland:2004jq} that reported no association between visual acuity and fixation stability.
-This difference can be attributed to our intact foveal function group, who showed stable fixation and relatively good acuity, driving up the strength of this association relative to studies whose patient populations did not include patients with functional foveal vision.
-Indeed, any study that includes diverse groups of patients spanning a wide range of acuities and fixation stabilities is likely to find a stronger correlation than a study within a single group of patients.
+The difference can be attributed to our intact foveal function group, who showed stable fixation and relatively good acuity, driving up the strength of this association relative to studies whose patient populations did not include patients with functional foveal vision.
+Indeed, any study such as ours that includes diverse groups of patients spanning a wide range of acuities and fixation stabilities is likely to find a stronger correlation than a study within a single group of patients.
 A scatterplot of fixation stability versus visual acuity (see Supplementary Materials, Figure \ref{fig:scatter_acuity_stability}) shows two clusters, one for each of the patient groups, with little evidence of correlations within each group (though note that the LV:F group was selected on the basis of steady fixation).
 Of course, these correlational analyses must all be treated cautiously due to our small patient sample size.
 

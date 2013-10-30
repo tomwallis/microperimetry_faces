@@ -133,7 +133,7 @@ Hilz, R. and Cavonius, C.~R. (1974).
 \newblock {\em Vision Research}, 14(12):1333--1337.
 
 \bibitem[Hoffman and Gelman, ress]{Hoffman-Gelman:2012}
-Hoffman, M.~D. and Gelman, A. ({In press}).
+Hoffman, M.~D. and Gelman, A. ({in press}).
 \newblock {The No-U-Turn Sampler: Adaptively Setting Path Lengths in
   Hamiltonian Monte Carlo}.
 \newblock {\em Journal of Machine Learning Research}.
@@ -335,13 +335,13 @@ Sekuler, A.~B., Gaspar, C.~M., Gold, J.~M., and Bennett, P.~J. (2004).
 
 \bibitem[{Stan Development Team}, 2013a]{stan-software:2013}
 {Stan Development Team} (2013a).
-\newblock {Stan: A C++ Library for Probability and Sampling, Version 1.3}.
+\newblock {Stan: A C++ Library for Probability and Sampling, Version 2.0.1}.
 \newblock Technical report.
 
 \bibitem[{Stan Development Team}, 2013b]{stan-manual:2013}
 {Stan Development Team} (2013b).
 \newblock {\em {Stan Modeling Language User's Guide and Reference Manual,
-  Version 1.3}}.
+  Version 2.0.1}}.
 
 \bibitem[Taylor et~al., 2009]{Taylor:2009wb}
 Taylor, C.~P., Bennett, P.~J., and Sekuler, A.~B. (2009).
