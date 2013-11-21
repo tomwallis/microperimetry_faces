@@ -7,7 +7,7 @@ These files are released under the GPL-3 License. I don't offer any support. You
 
 **IMPORTANT**: If you adapt any part of these scripts for your own academic work, please help keep me employed by citing the following paper:
 
-Wallis, T.S.A., Taylor, C.P.T., Wallis, J., Jackson, M.L. and Bex, P.J. (under review). Characterisation of field loss based on microperimetry is predictive of face recognition difficulties.
+Wallis, T.S.A., Taylor, C.P.T., Wallis, J., Jackson, M.L. and Bex, P.J. (in press). Characterisation of field loss based on microperimetry is predictive of face recognition difficulties. Investigative Ophthalmology and Visual Science.
 
 Subdirectories in this repository
 -----------------
