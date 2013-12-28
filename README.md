@@ -40,12 +40,12 @@ You may need to uncomment some source() functions, for example, to run the MCMC 
 Dependencies
 -----------------
 R packages that you will need to install to reproduce the analyses in full are
-    * Rstan (available from www.mc-stan.org)
-    * plyr (on CRAN)
-    * ggplot2 (on CRAN)
-    * reshape2 (on CRAN)
-    * wutils (available from my github [here](https://github.com/tomwallis/wutils))
-    * psybayes (available from my github [here](https://github.com/tomwallis/psybayes))
+  * Rstan (available from www.mc-stan.org)
+  * plyr (on CRAN)
+  * ggplot2 (on CRAN)
+  * reshape2 (on CRAN)
+  * wutils (available from my github [here](https://github.com/tomwallis/wutils))
+  * psybayes (available from my github [here](https://github.com/tomwallis/psybayes))
 
 
 Stan versions for the sampling in the paper
