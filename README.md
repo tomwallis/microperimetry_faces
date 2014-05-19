@@ -1,6 +1,8 @@
 Microperimetry and face recognition
 ======
 
+https://zenodo.org/badge/4023/tomwallis/microperimetry_faces.png
+
 These are R scripts to reproduce the analyses in Wallis, Taylor, Wallis, Jackson & Bex (2014).
 
 These files are released under the GPL-3 License. I don't offer any support. You are welcome to send me an email but I make no claim that I will (be able to) help, particularly if you are attempting to use a different platform or setup than mine (I'm running on OSX 10.8 with RStudio).
@@ -8,6 +10,7 @@ These files are released under the GPL-3 License. I don't offer any support. You
 **IMPORTANT**: If you adapt any part of these scripts for your own academic work, please help keep me employed by citing the following paper:
 
 Wallis, T.S.A., Taylor, C.P.T., Wallis, J., Jackson, M.L. and Bex, P.J. (2014). Characterisation of field loss based on microperimetry is predictive of face recognition difficulties. _Investigative Ophthalmology and Visual Science, 55_(1): 142–153.
+
 
 Subdirectories in this repository
 -----------------
