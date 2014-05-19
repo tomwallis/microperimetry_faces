@@ -1,7 +1,7 @@
 Microperimetry and face recognition
 ======
 
-https://zenodo.org/badge/4023/tomwallis/microperimetry_faces.png
+![tag](https://zenodo.org/badge/4023/tomwallis/microperimetry_faces.png)
 
 These are R scripts to reproduce the analyses in Wallis, Taylor, Wallis, Jackson & Bex (2014).
 
